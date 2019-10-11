@@ -33,10 +33,13 @@ public class Logic {
 			System.out.println("failed: guess has already been guessed");
 		}
 		
-		//this just tests if the guess is added if not already on the list
+		//this just tests if the guess is added (if not already on the list)
+		
+		/*
 		if(addStrike("qwerty", "h").equals("qwertyh")){
 			System.out.println("succeeded with lowercase");
 		}
+		*/
 		
 		//this is for Capitals in addStrike
 		if(addStrike("qwerty", "Q").equals("qwertyQ")){
@@ -45,17 +48,21 @@ public class Logic {
 		
 		
 		//testing guessWord
+		
 		if(guessWord("test", "best") == true){
 			System.out.println("failed");
 		}
 		
+		/*
 		if(guessWord("test", "TEST") == true){
 			System.out.println("succeeded with capitals");
 		}
 		
+		
 		if(guessWord("test", "test") == true){
 			System.out.println("succeeded with lowercase");
 		}
+		*/
 		
 		if(guessWord("test", "t est") == true){
 			System.out.println("failed with whitespace");
@@ -64,8 +71,32 @@ public class Logic {
 		
 		//testing guessLetter
 		
+		/*
+		if(guessLetter("apcs", "ap", "c") == true){
+			System.out.println("succeeded with adding");
+		}
+		*/
+		
+		if(guessLetter("apcs", "ap", "a") == true){
+			System.out.println("mission failure");
+		}
+		
+		if(guessLetter("apcs", "ap", "A") == true){
+			System.out.println("mission failure");
+		}
 		
 		
+		//testing withSpaces
+		
+		/*
+		if(withSpaces("apcs").equals("a p c s ")){
+			System.out.println("mission accomplished");
+		}
+		*/
+		
+		if(withSpaces("apcs").equals("apcs")){
+			System.out.println("mission failure: same word outputted");
+		}
 		
 	}
 	
@@ -141,7 +172,7 @@ public class Logic {
      */
     public static boolean guessLetter(String word, String curr, String guess){
       
-    	if(curr.toLowerCase().indexOf(guess.toLowerCase()) < 0 && word.toLowerCase().indexOf(guess.toLowerCase()) > 0){
+    	if(curr.toLowerCase().indexOf(guess.toLowerCase()) < 0 && word.toLowerCase().indexOf(guess.toLowerCase()) >= 0){
     		return true;
     	}else{
     		return false;
@@ -192,9 +223,18 @@ public class Logic {
      * @return the word with spaces as shown above
      */
     public static String withSpaces(String str){
-        String result = "";
-        
-        return result;
+    	
+    	//return(str.replace("", " ").trim());
+    	
+    	String newString = "";
+    	
+    	for(int i = 0; i < str.length(); i++) {
+    		newString += str.substring(i, i + 1) + " ";
+    	}
+    	
+    	return newString;
+    	
+    	
     }
 
     /**
