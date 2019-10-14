@@ -98,6 +98,39 @@ public class Logic {
 			System.out.println("mission failure: same word outputted");
 		}
 		
+		
+		//testing withoutSpaces
+		
+		/*
+		if(withoutSpaces("a p c s ").equals("apcs")){
+			System.out.println("mission accomplished");
+		}
+		*/
+		
+		if(withoutSpaces("a p c s ").equals("a p c s ")){
+			System.out.println("mission failure");
+		}
+		
+		
+		//testing reset
+		
+		/*
+		if(reset("apcs").equals("____")){
+			System.out.println("mission accomplished");
+		}
+		*/
+		
+		if(reset("apcs").equals("apcs")){
+			System.out.println("mission failure");
+		}
+		
+		
+		//testing encrypt
+		
+		
+		
+		
+		
 	}
 	
 	
@@ -197,6 +230,13 @@ public class Logic {
     public static String encrypt(String word, String curr, String guess) {
         String result = "";
         
+        for(int i = 0; i < curr.length(); i++)
+        	if(word.substring(i, i + 1).equalsIgnoreCase(guess) && curr.substring(i , i + 1).equals("_")){
+        		result += guess;
+        	} else{
+        		result += curr.substring(i, i + 1);
+        	}
+        
         return result;
     }
     
@@ -210,9 +250,15 @@ public class Logic {
      * @return version of the string without spaces as shown above
      */
     public static String withoutSpaces(String str){
-        String result = "";
+        String newString = "";
         
-        return result;
+        for(int i = 0; i < str.length(); i++){
+        	if(!str.substring(i, i + 1).equals(" ")){
+        		newString += str.substring(i, i + 1);
+        	}
+        }
+       
+        return newString;
     }
     
     /**
@@ -255,6 +301,10 @@ public class Logic {
      */
     public static String reset(String word) {
         String result = "";
+        
+        for(int i = 0; i < word.length(); i++){
+        	result += "_";
+        }
        
         return result;
     }
