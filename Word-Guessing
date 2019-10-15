@@ -5,14 +5,28 @@
  */
 
 /**
+ * Hangman -- Word-Guessing in Hangman Game
+ * This program creates most of the necessary functions in a Hangman game:
+ * 		 - it encrypts letters that haven't been guessed
+ *		 - it updates the score if you guess the word correctly
+ *		 - it checks to see if the letter and word guesses are correct 
+ *		 - etc.
  *
- * @author domingodavid
+ * @author Nisheet Patel 
+ * 
+ * @recitation Instructor: Mr. David 
+ * 
+ * @date 14 October 2019
+ * 
  */
+
 public class Logic {
-	
-	
+
 	public static void main(String[] arg){
 		/* test your own methods below! */
+		
+		//in most test cases, I have just included the fail statements because that is all that is necessary (success statements are commented out)
+		//however, for some methods, I kept the success statements because there are many possible incorrect outcomes
 		
 		// testing updateScore 
 		
@@ -127,9 +141,21 @@ public class Logic {
 		
 		//testing encrypt
 		
+		if(encrypt("guess", "gu___", "e").equals("gue__")) {
+			System.out.println("Success: letters are encrypted");
+		}
 		
+		if(encrypt("guess", "gu___", "e").equals("guess")) {
+			System.out.println("mission failure");
+		}
 		
+		if(encrypt("guess", "gu___", "e").equals("gue")) {
+			System.out.println("mission failure");
+		}
 		
+		if(encrypt("guess", "gu___", "e").equals("gue___")) {
+			System.out.println("mission failure");
+		}
 		
 	}
 	
@@ -233,7 +259,7 @@ public class Logic {
         for(int i = 0; i < curr.length(); i++)
         	if(word.substring(i, i + 1).equalsIgnoreCase(guess) && curr.substring(i , i + 1).equals("_")){
         		result += guess;
-        	} else{
+        	}else{
         		result += curr.substring(i, i + 1);
         	}
         
